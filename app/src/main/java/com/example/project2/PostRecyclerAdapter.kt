@@ -8,10 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.project2.Models.Post
+import kotlinx.android.synthetic.main.layout_list_item.view.*
 
 class PostRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>()
 {
-    private var items: ArrayList<Post> = ArrayList()
+    private var items: List<Post> = ArrayList()
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -26,6 +27,11 @@ class PostRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>()
                 holder.bind(items.get(position))
             }
         }
+    }
+
+    fun submitList(PostList: List<Post>)
+    {
+        this.items = PostList
     }
 
     override fun getItemCount(): Int {
@@ -45,13 +51,13 @@ class PostRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>()
         {
             movieTitle.setText(Post.title)
             movieStreamCount.setText(Post.streamCount)
-            movieImage.setText(Post.title)
 
             val requestOptions = RequestOptions()
                 .placeholder(R.drawable.ic_launcher_background)
                 .error(R.drawable.ic_launcher_background)
 
-                Glide.with(itemView.Context)
+                Glide.with(itemView.context)
+                    .applyDefaultRequestOptions(requestOptions)
                     .load(Post.image)
                     .into(movieImage)
         }
