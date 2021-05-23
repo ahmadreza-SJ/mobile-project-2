@@ -1,13 +1,13 @@
-package com.example.project2
+package com.example.project2.Adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.project2.Models.Post
+import com.example.project2.R
 import kotlinx.android.synthetic.main.layout_list_item.view.*
 
 class PostRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>()
@@ -17,7 +17,7 @@ class PostRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return PostViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.layout_list_item, parent, false)
+                LayoutInflater.from(parent.context).inflate(R.layout.layout_list_item, parent, false)
         )
     }
 
