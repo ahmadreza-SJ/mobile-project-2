@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.example.project2.Models.Post
 import com.example.project2.Repositories.PostRepository
 
-public class MainActivityViewModel: ViewModel()
+public class HomeViewModel: ViewModel()
 {
     private var mPosts : MutableLiveData<List<Post>> = MutableLiveData()
     private var mRepo: PostRepository = PostRepository.getInstance()
