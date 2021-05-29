@@ -7,12 +7,14 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.project2.Models.Developer
 import com.example.project2.Models.Post
 import kotlinx.android.synthetic.main.layout_list_item.view.*
 
 class PostRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>()
 {
     private var items: List<Post> = ArrayList()
+    private var developers: List<Developer> = ArrayList()
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -32,6 +34,11 @@ class PostRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>()
     fun submitList(PostList: List<Post>)
     {
         this.items = PostList
+    }
+
+    fun submitDevList(DevList: List<Developer>)
+    {
+        this.developers = DevList
     }
 
     override fun getItemCount(): Int {

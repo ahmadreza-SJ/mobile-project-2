@@ -1,5 +1,6 @@
 package com.example.project2
 
+import com.example.project2.Models.Developer
 import com.example.project2.Models.Post
 
 class DataSource
@@ -38,5 +39,41 @@ class DataSource
             )
             return list
         }
+
+        fun aboutUsInfo() : ArrayList<Developer>
+        {
+            val list = ArrayList<Developer>()
+            list.add(
+                Developer(
+                    "Mahsa Ghaderan",
+                    "https://i.ibb.co/M1Lz2mv/mahsa.png",
+                    "96521416"
+                )
+            )
+            list.add(
+                Developer(
+                    "Ahmadreza SanatJu",
+                    "https://i.ibb.co/JHSc3rF/ahmad.jpg",
+                    "9652...."
+                )
+            )
+            list.add(
+                Developer(
+                    "Meepo",
+                    "https://i.ibb.co/4YbNvZf/meepo.png\n",
+                    "Miew"
+                )
+            )
+            list.add(
+                Developer(
+                    "Farzad",
+                    "https://i.ibb.co/TKQcF6P/farzad.jpg",
+                    "Miew"
+                )
+            )
+            return list
+        }
     }
+
+
 }

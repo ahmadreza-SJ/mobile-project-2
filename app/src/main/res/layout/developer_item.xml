@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="10dp"
+    app:cardCornerRadius="2dp"
+    app:cardPreventCornerOverlap="false"
+    android:layout_marginRight="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="3dp"
+    android:layout_marginBottom="0dp"
+    >
+
+
+    <LinearLayout
+        android:background="@color/gray"
+        android:layout_width="match_parent"
+        android:layout_height="103dp"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+<!--        <com.google.android.material.imageview.ShapeableImageView-->
+<!--            android:layout_width="50dp"-->
+<!--            android:src="@drawable/tv"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:background="@color/black"-->
+
+<!--            app:strokeColor="@android:color/black"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            android:layout_margin="10dp"-->
+<!--            app:shapeAppearanceOverlay="@style/roundedImageViewRounded"-->
+<!--            />-->
+
+        <ImageView
+            android:id="@+id/developer_image"
+            android:layout_width="101dp"
+            android:layout_height="match_parent"
+            android:layout_margin="0dp"
+            android:background="@drawable/rounded_image"
+            android:adjustViewBounds="true"
+            android:padding="10dp"
+            android:paddingTop="0dp"
+            android:scaleType="fitXY" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/developer_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/pale_pink"
+                />
+
+            <TextView
+                android:id="@+id/developer_std_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/light_gray"
+                android:textSize="10dp"
+                />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>
