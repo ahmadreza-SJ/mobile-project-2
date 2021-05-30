@@ -54,7 +54,6 @@ class PostRecyclerAdapter constructor(val onClickListener: OnClickListener) :
 
         init {
             itemView.setOnClickListener {
-
                 onClickListener.onClick(post)
             }
         }

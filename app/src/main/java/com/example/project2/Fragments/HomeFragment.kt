@@ -13,11 +13,13 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.project2.Adapters.DetailsRecyclerAdapter
 import com.example.project2.Adapters.PostRecyclerAdapter
 import com.example.project2.Models.Post
 import com.example.project2.R
 import com.example.project2.TopSpacingItemDecoration
 import com.example.project2.ViewModels.HomeViewModel
+import com.example.project2.ViewModels. MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -25,6 +27,7 @@ import kotlinx.android.synthetic.main.fragment_home.*
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
+
 
 /**
  * A simple [Fragment] subclass.
@@ -35,7 +38,9 @@ class HomeFragment : Fragment() {
     // TODO: Rename and change types of parameters
 
     private lateinit var postAdapter: PostRecyclerAdapter
-    private lateinit var mMainActivityViewModel: HomeViewModel
+    private lateinit var mHomeViewModel: HomeViewModel
+    private lateinit var mMainActivityViewModel: MainViewModel
+    private lateinit var detailsAdapter: DetailsRecyclerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,17 +51,15 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-
-
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mMainActivityViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+        mHomeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
-        mMainActivityViewModel.getPosts().observe(viewLifecycleOwner, Observer<List<Post>> {
+        mHomeViewModel.getPosts().observe(viewLifecycleOwner, Observer<List<Post>> {
             Log.e("aaaa", "Inside Observer")
             postAdapter.submitList(it)
         })
@@ -72,6 +75,13 @@ class HomeFragment : Fragment() {
             addItemDecoration(topSpacingDecoration)
             postAdapter = PostRecyclerAdapter(object : PostRecyclerAdapter.OnClickListener{
                 override fun onClick(Post: Post) {
+                    mMainActivityViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+                    mMainActivityViewModel.getPost().observe(viewLifecycleOwner, Observer<Post> {post ->
+
+                    })
+                    Log.e("aaaa", "Inside Observer")
+                    val mylist: List<Post> = listOf(Post)
+                    detailsAdapter.submitPost(mylist)
                     val navHostFragment =
                         (activity as AppCompatActivity).supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
                      navHostFragment.navController.navigate(R.id.action_homeFragment_to_detailFragment)
