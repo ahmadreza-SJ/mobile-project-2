@@ -47,12 +47,14 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        Log.e("aaaa", "on home fragment onCreateView")
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Log.e("aaaa", "on home fragment onViewCreated")
         mHomeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
         mHomeViewModel.getPosts().observe(viewLifecycleOwner, Observer<List<Post>> {
@@ -65,6 +67,8 @@ class HomeFragment : Fragment() {
 
 
     private fun initRecyclerView() {
+        Log.e("aaaa", "on home fragment initRecyclerView")
+
         recycler_view.apply {
             layoutManager = LinearLayoutManager(context)
             val topSpacingDecoration = TopSpacingItemDecoration(30)

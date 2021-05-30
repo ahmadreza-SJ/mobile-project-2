@@ -5,7 +5,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.project2.Models.Post
-import com.example.project2.Repositories.PostRepository
 public class MainViewModel: ViewModel()
 {
     private var mPost : MutableLiveData<Post> = MutableLiveData()
@@ -17,13 +16,14 @@ public class MainViewModel: ViewModel()
 
     fun getPost(): LiveData<Post>
     {
+        Log.e("AAAA", "get post viewmodel : ${mPost.value }" )
         return mPost
     }
 
     fun setPost(post: Post)
     {
         mPost.value = post
-        Log.e("AAAA", "viewmodel : ${mPost.value }" )
+        Log.e("AAAA", "set post viewmodel : ${mPost.value }" )
     }
 
 }

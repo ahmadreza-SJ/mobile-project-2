@@ -7,8 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.example.project2.Models.Developer
 import com.example.project2.Models.Post
 import com.example.project2.R
@@ -27,12 +27,12 @@ private const val ARG_PARAM2 = "param2"
  */
 class DetailFragment : Fragment() {
 
-    private val parentViewModel: MainViewModel by activityViewModels<MainViewModel>()
+    private val parentViewModel: MainViewModel by activityViewModels()
     private  var thepost : Post? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.e("aaaa", "on vie created :")
+        Log.e("aaaa", "on datils view created :")
         view.movie_titles.text = thepost!!.title
         view.end_year.text = thepost!!.releaseDate
         view.seasons_num.text = thepost!!.seasonCount
@@ -43,10 +43,10 @@ class DetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-
+        Log.e("aaaa", "on datils create view")
         parentViewModel.getPost().observe(viewLifecycleOwner, Observer<Post> {
-
-            Log.e("aaaa", "in get post : $it")
+            Log.e("AAAA", "Inside Observer Details")
+            thepost = it
         })
         Log.e("aaaa", "Inside Observer: $thepost")
         return inflater.inflate(R.layout.fragment_detail, container, false)
