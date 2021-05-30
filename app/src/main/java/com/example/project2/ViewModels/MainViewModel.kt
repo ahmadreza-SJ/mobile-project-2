@@ -12,7 +12,7 @@ public class MainViewModel: ViewModel()
 
     init
     {
-        Log.e("AAAA", "viewmodel : $mPost" )
+        Log.e("AAAA", "initial mainviewmodel : $mPost" )
     }
 
     fun getPost(): LiveData<Post>
@@ -20,10 +20,10 @@ public class MainViewModel: ViewModel()
         return mPost
     }
 
-    fun setPost(post: Post): LiveData<Post>
+    fun setPost(post: Post)
     {
         mPost.value = post
-        return  mPost
+        Log.e("AAAA", "viewmodel : ${mPost.value }" )
     }
 
 }

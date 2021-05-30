@@ -1,20 +1,15 @@
 package com.example.project2.Fragments
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil.setContentView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.project2.Adapters.DetailsRecyclerAdapter
 import com.example.project2.Adapters.PostRecyclerAdapter
 import com.example.project2.Models.Post
 import com.example.project2.R
@@ -40,8 +35,6 @@ class HomeFragment : Fragment() {
 
     private lateinit var postAdapter: PostRecyclerAdapter
     private lateinit var mHomeViewModel: HomeViewModel
-    private lateinit var mMainActivityViewModel: MainViewModel
-    private lateinit var detailsAdapter: DetailsRecyclerAdapter
     private val mainViewModel: MainViewModel by viewModels(
         ownerProducer = { requireParentFragment() }
     )
@@ -63,7 +56,7 @@ class HomeFragment : Fragment() {
         mHomeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
         mHomeViewModel.getPosts().observe(viewLifecycleOwner, Observer<List<Post>> {
-            Log.e("aaaa", "Inside Observer")
+            Log.e("aaaa", "Inside Observer home fragment")
             postAdapter.submitList(it)
         })
 
