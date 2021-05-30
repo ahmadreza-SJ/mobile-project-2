@@ -8,12 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.navArgs
 import com.example.project2.Adapters.DetailsRecyclerAdapter
 import com.example.project2.Adapters.PostRecyclerAdapter
 import com.example.project2.Models.Post
 import com.example.project2.R
-import com.example.project2.ViewModels.HomeViewModel
 import com.example.project2.ViewModels.MainViewModel
+import kotlinx.android.synthetic.main.layout_details.view.*
+import kotlinx.android.synthetic.main.layout_list_item.view.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -29,11 +31,17 @@ class DetailFragment : Fragment() {
 
     private lateinit var mMainActivityViewModel: MainViewModel
     private lateinit var detailsAdapter: DetailsRecyclerAdapter
+//    private val args: FragmentArgs by navArgs()
+//    private lateinit varx thepost: Post
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+//        thepost = args.thepost
+//        view.movie_title.text = thepost.title
+//        view.end_year.text = thepost.releaseDate
+//        view.seasons_num.text = thepost.seasonCount
+//        view.movie_stream_count.text = thepost.streamCount
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

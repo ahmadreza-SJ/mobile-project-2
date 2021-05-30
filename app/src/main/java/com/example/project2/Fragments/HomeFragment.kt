@@ -7,6 +7,7 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil.setContentView
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
@@ -41,7 +42,9 @@ class HomeFragment : Fragment() {
     private lateinit var mHomeViewModel: HomeViewModel
     private lateinit var mMainActivityViewModel: MainViewModel
     private lateinit var detailsAdapter: DetailsRecyclerAdapter
-
+    private val mainViewModel: MainViewModel by viewModels(
+        ownerProducer = { requireParentFragment() }
+    )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -75,13 +78,7 @@ class HomeFragment : Fragment() {
             addItemDecoration(topSpacingDecoration)
             postAdapter = PostRecyclerAdapter(object : PostRecyclerAdapter.OnClickListener{
                 override fun onClick(Post: Post) {
-                    mMainActivityViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-                    mMainActivityViewModel.getPost().observe(viewLifecycleOwner, Observer<Post> {post ->
-
-                    })
-                    Log.e("aaaa", "Inside Observer")
-                    val mylist: List<Post> = listOf(Post)
-                    detailsAdapter.submitPost(mylist)
+                    mainViewModel.setPost(Post)
                     val navHostFragment =
                         (activity as AppCompatActivity).supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
                      navHostFragment.navController.navigate(R.id.action_homeFragment_to_detailFragment)
